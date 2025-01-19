@@ -94,9 +94,9 @@ public class OkxService {
             stringRedisTemplate.opsForZSet().add(keyData, JSONUtil.toJsonStr(csd), Double.parseDouble(timestamp));
             stringRedisTemplate.opsForValue().set(key, timestamp);
         } else {
-            int t1 = Integer.parseInt(timestamp);
-            int t2 = Integer.parseInt(latestTimestamp);
-            if (t1 >= t2) {
+            long t1 = Long.parseLong(timestamp);
+            long t2 = Long.parseLong(latestTimestamp);
+            if (t1 > t2) {
                 stringRedisTemplate.opsForZSet().add(keyData, JSONUtil.toJsonStr(csd), Double.parseDouble(timestamp));
                 stringRedisTemplate.opsForValue().set(key, timestamp);
             }
