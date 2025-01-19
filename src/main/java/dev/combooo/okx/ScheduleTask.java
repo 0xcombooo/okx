@@ -13,7 +13,7 @@ public class ScheduleTask {
     private OkxService okxService;
 
     // 每分钟获取一次K线数据
-    @Scheduled(cron = "1 */1 * * * ?")
+    @Scheduled(cron = "5 */1 * * * ?")
     public void getCandleStickData() {
         try {
             okxService.getCandleStickData("BTC-USDT-SWAP", "15m", "1");
